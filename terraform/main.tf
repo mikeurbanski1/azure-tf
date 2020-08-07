@@ -1,3 +1,12 @@
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "tfstate"
+    storage_account_name = "bcazrtfstatestorage"
+    container_name       = "tfstate"
+    key                  = "azure_tf.tfstate"
+  }
+}
+
 provider "azurerm" {
   features {}
 }

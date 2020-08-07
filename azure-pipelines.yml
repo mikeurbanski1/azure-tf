@@ -41,7 +41,7 @@ steps:
     command: 'plan'
     provider: 'azurerm'
     workingDirectory: 'terraform'
-    environmentServiceNameAzureRM: 'tf-service-connection'
+    environmentServiceName: 'tf-service-connection'
   displayName: 'terraform plan'
 # - script: pip install bridgecrew
 #   displayName: 'Install the Bridgecrew CLI'

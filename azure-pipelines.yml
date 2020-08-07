@@ -36,6 +36,7 @@ steps:
     command: 'validate'
     provider: 'azurerm'
     workingDirectory: 'terraform'
+  displayName: 'terraform validate'
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
@@ -43,6 +44,12 @@ steps:
     workingDirectory: 'terraform'
     environmentServiceName: 'tf-service-connection'
   displayName: 'terraform plan'
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    workingDirectory: 'terraform'
+    environmentServiceName: 'tf-service-connection'
+  displayName: 'terraform apply'
 # - script: pip install bridgecrew
 #   displayName: 'Install the Bridgecrew CLI'
 # - script: bridgecrew -d terraform

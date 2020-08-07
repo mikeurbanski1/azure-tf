@@ -3,8 +3,10 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+# trigger:
+#   paths:
+#     include:
+#       - "*.tf"
 
 pool:
   vmImage: 'ubuntu-latest'

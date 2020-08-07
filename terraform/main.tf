@@ -1,6 +1,6 @@
-provider "azurerm" {
-  features {}
-}
+# provider "azurerm" {
+#   features {}
+# }
 
 resource "random_string" "random" {
   length = 16

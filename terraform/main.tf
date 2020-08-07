@@ -3,11 +3,11 @@ terraform {
     resource_group_name  = "tfstate"
     storage_account_name = "bcazrtfstatestorage"
     container_name       = "tfstate"
-    key                  = "azure_tf.tfstate"
   }
 }
 
 provider "azurerm" {
+  version = "~>2.0"
   features {}
 }
 

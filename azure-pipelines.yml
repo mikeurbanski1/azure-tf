@@ -16,24 +16,32 @@ steps:
   inputs:
     versionSpec: '3.8'
   displayName: 'Install Python 3.8'
-# - task: TerraformInstaller@0
-#   inputs:
-#     terraformVersion: 'latest'
-#   displayName: 'Install Terraform'
-# - task: TerraformCLI@0
-#   inputs:
-#     command: 'init'
-#     workingDirectory: 'terraform'
-#   displayName: 'terraform init'
-# - task: TerraformCLI@0
-#   inputs:
-#     command: 'plan'
-#     workingDirectory: 'terraform'
-#   displayName: 'terraform plan'
-- script: pip install bridgecrew
-  displayName: 'Install the Bridgecrew CLI'
-- script: bridgecrew -d terraform
-  displayName: 'Scan with Bridgecrew'
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: 'latest'
+  displayName: 'Install Terraform'
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    workingDirectory: 'terraform'
+    backendType: 'azurerm'
+    backendServiceArm: 'BC_AZR_1(6e1d96d8-e736-4089-a694-908b1f5ceea2)'
+    backendAzureRmResourceGroupName: 'tfstate'
+    backendAzureRmStorageAccountName: 'bcazrtfstatestorage'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'azure_tf.tfstate'
+  displayName: 'terraform init'
+- task: TerraformCLI@0
+  inputs:
+    command: 'plan'
+    workingDirectory: 'terraform'
+  displayName: 'terraform plan'
+# - script: pip install bridgecrew
+#   displayName: 'Install the Bridgecrew CLI'
+# - script: bridgecrew -d terraform
+#   displayName: 'Scan with Bridgecrew'
+# - script: echo 'The scan was successful'
+#   displayName: 'Dummy success task'
 # - script: echo Hello, world!
 #   displayName: 'Run a one-line script'
 

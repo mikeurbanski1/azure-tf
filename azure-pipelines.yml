@@ -18,7 +18,7 @@ steps:
 #   displayName: 'Install Python 3.8'
 - task: TerraformInstaller@0
   inputs:
-    terraformVersion: 'latest'
+    terraformVersion: 'v0.12.28'
   displayName: 'Install Terraform'
 - task: TerraformCLI@0
   inputs:

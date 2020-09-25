@@ -1,8 +1,8 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "tfstate"
-    storage_account_name = "bcazrtfstatestorage"
-    container_name       = "tfstate"
+    resource_group_name  = "tf2state"
+    storage_account_name = "bcazr2tfstatestorage"
+    container_name       = "tf2state"
   }
 }
 
@@ -18,7 +18,7 @@ data "azurerm_resource_group" "tf_rg" {
 }
 
 resource "azurerm_storage_account" "storage_account" {
-  name                     = "bcazrstorage2"
+  name                     = "bcazr2storage2"
   resource_group_name      = data.azurerm_resource_group.tf_rg.name
   location                 = data.azurerm_resource_group.tf_rg.location
   account_tier             = "Standard"

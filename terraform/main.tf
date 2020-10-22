@@ -25,19 +25,3 @@ resource "azurerm_storage_account" "storage_account" {
   account_replication_type = "GRS"
 }
 
-# resource "random_string" "random" {
-#   length = 16
-#   special = true
-#   override_special = "/@£$"
-# }
-
-# resource "random_string" "random2" {
-#   length = 16
-#   special = true
-#   override_special = "/@£$"
-# }
-
-# output "out" {
-#   value = random_string.random.result
-# }
-

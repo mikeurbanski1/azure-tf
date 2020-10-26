@@ -19,7 +19,15 @@ data "azurerm_resource_group" "tf_rg" {
   name = "tfstate"
 }
 
-resource "azurerm_storage_account" "storage_account" {
+resource "azurerm_storage_account" "storage_account4" {
+  name                     = "bcazrstorage4"
+  resource_group_name      = data.azurerm_resource_group.tf_rg.name
+  location                 = data.azurerm_resource_group.tf_rg.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+}
+
+resource "azurerm_storage_account" "storage_account3" {
   name                     = "bcazrstorage3"
   resource_group_name      = data.azurerm_resource_group.tf_rg.name
   location                 = data.azurerm_resource_group.tf_rg.location
@@ -27,7 +35,7 @@ resource "azurerm_storage_account" "storage_account" {
   account_replication_type = "GRS"
 }
 
-resource "azurerm_storage_account" "storage_account" {
+resource "azurerm_storage_account" "storage_account2" {
   name                     = "bcazr2storage2"
   resource_group_name      = data.azurerm_resource_group.tf_rg.name
   location                 = data.azurerm_resource_group.tf_rg.location

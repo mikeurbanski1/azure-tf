@@ -25,10 +25,10 @@ steps:
     command: 'init'
     workingDirectory: 'terraform'
     backendType: 'azurerm'
-    backendServiceArm: 'tf-service-connection'
-    backendAzureRmResourceGroupName: 'tfstate'
-    backendAzureRmStorageAccountName: 'bcazrtfstatestorage'
-    backendAzureRmContainerName: 'tfstate'
+    backendServiceArm: 'tf2-service-connection'
+    backendAzureRmResourceGroupName: 'tf2state'
+    backendAzureRmStorageAccountName: 'bcazr2tfstatestorage'
+    backendAzureRmContainerName: 'tf2state'
     backendAzureRmKey: 'azure_tf.tfstate'
   displayName: 'terraform init'
 - task: TerraformCLI@0
@@ -52,7 +52,7 @@ steps:
   inputs:
     command: 'apply'
     workingDirectory: 'terraform'
-    environmentServiceName: 'tf-service-connection'
+    environmentServiceName: 'tf2-service-connection'
   displayName: 'terraform apply'
 # - script: echo 'The scan was successful'
 #   displayName: 'Dummy success task'

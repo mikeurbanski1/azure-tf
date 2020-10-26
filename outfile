@@ -1,0 +1,1 @@
+{"errorType":"Error","errorMessage":"failed to send notification to splunk","trace":["Error: failed to send notification to splunk","    at module.exports.handle (/var/task/splunkService/handler.js:99:15)","    at process._tickCallback (internal/process/next_tick.js:68:7)"]}

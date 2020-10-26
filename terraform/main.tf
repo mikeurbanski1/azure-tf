@@ -13,8 +13,18 @@ provider "azurerm" {
 
 data "azurerm_client_config" "current" {}
 
+data "azurerm_subscription" "primary" {}
+
 data "azurerm_resource_group" "tf_rg" {
   name = "tfstate"
+}
+
+resource "azurerm_storage_account" "storage_account" {
+  name                     = "bcazrstorage3"
+  resource_group_name      = data.azurerm_resource_group.tf_rg.name
+  location                 = data.azurerm_resource_group.tf_rg.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
 }
 
 resource "azurerm_storage_account" "storage_account" {
@@ -25,19 +35,23 @@ resource "azurerm_storage_account" "storage_account" {
   account_replication_type = "GRS"
 }
 
-# resource "random_string" "random" {
-#   length = 16
-#   special = true
-#   override_special = "/@£$"
-# }
+//resource "azurerm_storage_container" "container" {
+//  name                  = "storage2"
+//  storage_account_name  = azurerm_storage_account.storage_account.name
+//  container_access_type = "container"
+//}
 
-# resource "random_string" "random2" {
-#   length = 16
-#   special = true
-#   override_special = "/@£$"
-# }
 
-# output "out" {
-#   value = random_string.random.result
-# }
+# resource "azurerm_role_definition" "example" {
+#     name        = "my-custom-role"
+#     scope       = data.azurerm_subscription.primary.id
+#     description = "This is a custom role created via Terraform"
 
+#     permissions {
+#       actions     = ["*"]
+#       not_actions = []
+#     }
+
+#     assignable_scopes = ["/subscriptions/${data.azurerm_subscription.primary.id}/resourceGroup/tfstate"]
+
+# }
